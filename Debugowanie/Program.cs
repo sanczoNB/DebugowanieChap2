@@ -6,11 +6,22 @@ namespace Debugowanie
     {
         public static void Main(string[] args)
         {
-            int x = 1234;
-            int y = Kwadrat(x);
-            y = Kwadrat(y);
-            string sy = y.ToString();
-            Console.WriteLine(sy);
+            try
+            {
+                int x = 1234;
+                int y = Kwadrat(x);
+                y = Kwadrat(y);
+                string sy = y.ToString();
+                Console.WriteLine(sy);
+            }
+            catch (Exception ex)
+            {
+                ConsoleColor currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine("Błąd: {0}", ex.Message);
+                Console.ForegroundColor = currentColor;
+
+            }
         }
 
         private static int Kwadrat(int argument)
